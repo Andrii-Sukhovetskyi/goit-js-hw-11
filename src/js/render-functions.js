@@ -7,7 +7,10 @@ import "izitoast/dist/css/iziToast.min.css";
 const loadingIndicator = document.getElementById('loader');
 const gallery = document.getElementById('image-gallery');
 
-let lightbox;
+const lightbox = new SimpleLightbox('.gallery-link', {
+  captionsData: 'alt',
+  captionDelay: 250
+});
 
 export function renderImages(images) {
   if (!gallery) {
@@ -31,14 +34,6 @@ export function renderImages(images) {
   
   gallery.innerHTML = imageItems;
 
-  if (lightbox) {
-    lightbox.destroy(); ;
-  }
-   lightbox = new SimpleLightbox('.gallery-link', {
-        captionsData: 'alt',
-        captionDelay: 250
-   });
-  
     lightbox.refresh();
 }
 
